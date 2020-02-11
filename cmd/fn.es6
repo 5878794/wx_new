@@ -1,33 +1,34 @@
-const   fs = require('fs'),
-		path = require('path');
+
+let fs = require('fs'),
+    pug = require('pug'),
+    exec = require('child_process').execSync;
 
 
 module.exports = {
-	//获取指定路径下的项目名称
-	//@param:dirPath:str            需要获取的跟路径
-	//@param:projectName:str        需要编译的目录名
-	getProjectDirPath(dirPath,projectName){
-		//获取目录下的文件和文件夹
-		let files = fs.readdirSync(dirPath),
-			backData = null;
-
-		files.map(all=>{
-				//实际地址
-			let thisPath = path.join(dirPath,all,'/'),
-				//改文件或目录状态
-				fileState = fs.statSync(thisPath);
-
-				//判断是否是目录
-			if(fileState.isDirectory()){
-				//判断是否需要的文件夹名
-				if(all == projectName){
-					backData = thisPath;
-				}
-			}
-
-		});
-
-		return backData;
-	}
-
+    runExec(cmdText){
+        exec(cmdText);
+    },
+    readFile(filePath){
+        return fs.readFileSync(filePath,'utf-8');
+    },
+    writeFile(filePath,text){
+        fs.writeFileSync(filePath,text);
+    },
+    readLessFileAndCompile(filePath){
+        let cmd = 'lessc --plugin=less-plugin-clean-css '+filePath,
+            text = exec(cmd);
+        text = text.toString();
+        return text;
+    },
+    readPugFileAndCompile(filePath){
+        return pug.renderFile(
+            filePath,
+            {pretty:true}
+        );
+    },
+    dirIsExistOrCreate(filePath){
+        if(!fs.existsSync(filePath)){
+            fs.mkdirSync(filePath, '0777');
+        }
+    }
 };
