@@ -37,6 +37,10 @@ let renderFn = {
 			//处理jq需要的
 
 
+			//生成数据data用的js文件 (同时js编译的时候判断是否有文件 要require, app类里面要设置setData)
+
+
+
 			//闭合标签
 			html = html.replace(/(<input.*?)>/gi ,"$1 />");
 			html = html.replace(/<img(.*?)>/gi ,"<image $1></image>>");
