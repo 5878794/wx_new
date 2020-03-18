@@ -8,6 +8,9 @@ module.exports = {
     runExec(cmdText){
         exec(cmdText);
     },
+    getDirFile(path){
+        return fs.readdirSync(path);
+    },
     readFile(filePath){
         return fs.readFileSync(filePath,'utf-8');
     },

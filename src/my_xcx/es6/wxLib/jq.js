@@ -4,7 +4,7 @@ let getParam = Symbol(),
     createRadomNumber = Symbol(),
     nu = 0;
 
-const regeneratorRuntime = require('./runtime.js');    
+const regeneratorRuntime = require('./runtime');
 
 class jq{
     constructor(id,obj){

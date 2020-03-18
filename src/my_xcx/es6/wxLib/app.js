@@ -1,13 +1,23 @@
+
 const pageFn = require('./pagePublish');
 
 
-module.exports = {
-    ready(obj){
+
+
+let app = {
+    run(obj){
+        let _this = this;
         obj = Object.assign(obj,pageFn);
+        obj.onReady = function(){
+            obj.init().then(rs=>{
+                console.log("初始化完成");
+            }).catch(e=>{
+                console.log(e);
+                _this.alert(e);
+            });
+        };
         Page(obj);
     },
-
-
     //ajax promise
     // opt={
     //     url:'',  //@param:str
@@ -278,3 +288,7 @@ module.exports = {
         })
     }
 };
+
+
+
+module.exports = app;

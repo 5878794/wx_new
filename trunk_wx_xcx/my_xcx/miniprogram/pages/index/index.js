@@ -1,6 +1,7 @@
+const regeneratorRuntime = require('../../wxLib/runtime');
 
-const jq = require('wxLib/jq');
-const app = require('wxLib/app');
+const jq = require('../../wxLib/jq');
+const app = require('../../wxLib/app');
 
 // global.jq = jq;
 
