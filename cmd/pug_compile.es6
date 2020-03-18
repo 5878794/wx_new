@@ -9,7 +9,7 @@ let src = path.join(__dirname,'../src/'),
 	zfbDir = path.join(__dirname,'../trunk_zfb'),
 	h5Dir = path.join(__dirname,'../trunk_h5');
 
-
+// TODO
 let renderFn = {
 	[fn](projectName,writeFileFn){
 		src = path.join(src,'/'+projectName+'/pug/');
@@ -30,6 +30,12 @@ let renderFn = {
 
 			//返回html
 			html = $('body').html();
+
+			//处理input 的数据绑定 不赋值value 只做事件绑定
+
+
+			//处理jq需要的
+
 
 			//闭合标签
 			html = html.replace(/(<input.*?)>/gi ,"$1 />");
