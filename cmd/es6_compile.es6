@@ -47,14 +47,14 @@ let renderFn = {
 
 
 					//判断是否有jq的数据包
-					let jqFilePath = path.join(xcxOutDir,'pages/'+fileName+'/jq_data.js');
-					if(fs.existsSync(jqFilePath)){
-						fileText = "const __jq_data = require('./jq_data.js');\r\n" + fileText;
-
-						//将参数传入app.run
-						//app.run必须是代码最后一行
-						fileText = fileText.substr(0,fileText.lastIndexOf(')'))+',__jq_data);';
-					}
+					// let jqFilePath = path.join(xcxOutDir,'pages/'+fileName+'/jq_data.js');
+					// if(fs.existsSync(jqFilePath)){
+					// 	fileText = "const __jq_data = require('./jq_data.js');\r\n" + fileText;
+					//
+					// 	//将参数传入app.run
+					// 	//app.run必须是代码最后一行
+					// 	fileText = fileText.substr(0,fileText.lastIndexOf(')'))+',__jq_data);';
+					// }
 
 
 					lib.writeFile(cpToPath,fileText);

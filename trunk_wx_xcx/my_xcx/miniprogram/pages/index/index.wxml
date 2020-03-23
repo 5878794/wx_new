@@ -1,6 +1,6 @@
 <view>aaa</view>
-<view>222</view><image  src="#"></image>>
-<input type="text" id="a1" />
-<view id="a3">33</view>
-<view id="a5">44</view>
+<view>222</view><image ></image>
+<input type="text" id="a1" value="{{a1}}" bindinput="inputChange" class=" {{__jq.a1.class}}" style=" {{__jq.a1.style}}" data="{{__jq.a1.data}}" animation="{{__jq.a1.animation}}" catchtap="{{__jq.a1.catch_tap}}" />
+<view id="a3" style="width:100%; height:50rpx; background:red; {{__jq.a3.style}}" class=" {{__jq.a3.class}}" data="{{__jq.a3.data}}" animation="{{__jq.a3.animation}}" catchtap="{{__jq.a3.catch_tap}}">33</view>
+<view id="a5" class=" {{__jq.a5.class}}" style=" {{__jq.a5.style}}" data="{{__jq.a5.data}}" animation="{{__jq.a5.animation}}" catchtap="{{__jq.a5.catch_tap}}">44</view>
 <view>xianren</view>

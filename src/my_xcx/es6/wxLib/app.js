@@ -6,16 +6,16 @@ const pageFn = require('./pagePublish');
 
 let app = {
     run(obj){
-        let _this = this;
+        // let _this = this;
         obj = Object.assign(obj,pageFn);
-        obj.onReady = function(){
-            obj.init().then(rs=>{
-                console.log("初始化完成");
-            }).catch(e=>{
-                console.log(e);
-                _this.alert(e);
-            });
-        };
+        // obj.onReady = function(){
+        //     obj.init().then(rs=>{
+        //         console.log("初始化完成");
+        //     }).catch(e=>{
+        //         console.log(e);
+        //         _this.alert(e);
+        //     });
+        // };
         Page(obj);
     },
     //ajax promise

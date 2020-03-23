@@ -39,6 +39,7 @@ class jq{
 
         oldData[this.id][type] = val;
         // console.log(oldData)
+        console.log(this.obj)
         this.obj.setData({ __jq:oldData});
     }
 
@@ -278,6 +279,7 @@ class jq{
     //不冒泡的事件
     tap(fn){
         let fnName = this[createRadomNumber]();
+
         this.obj[fnName] = function(e){
             fn(e);
         };

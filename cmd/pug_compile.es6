@@ -111,10 +111,6 @@ let renderFn = {
 			html = $('body').html();
 
 
-			//闭合标签
-			html = html.replace(/(<input.*?)>/gi ,"$1 />");
-			html = html.replace(/<img(.*?)>/gi ,"<image $1></image>>");
-
 			let fileName = pugFile.replace(src1,'').split('.')[0];
 
 			writeFileFn(fileName,html,titleName,$);
@@ -129,6 +125,28 @@ let renderFn = {
 			let fileDir = path.join(xcxOutDir,'/'+fileName+'/');
 			ss.dirIsExistOrCreate(fileDir);
 
+
+			//处理jq需要的
+			//正则解析html中含id的标签头
+			//带id的input添加data的赋值对象
+			//input标签需要特殊处理事件 不要赋值id
+			let ids = html.match(/(?<=\bid\s*=\s*[\'\"]\s*)[a-z0-9_-]+(?=[\s*\'\"])/ig);
+			if(ids){
+				addJQ($,ids);
+
+				//生成数据data用的js文件 (同时js编译的时候判断是否有文件 要require, app类里面要设置setData)
+				//根据ids生成jq需要的附加data文件
+				// let jqFilePath = path.join(xcxDir,'/'+projectName+'/miniprogram/pages/'+fileName+'/'+'jq_data.js'),
+				// 	jq_data_text = createDataText(ids);
+				//
+				// ss.writeFile(jqFilePath,jq_data_text);
+				html = $('body').html();
+			}
+
+			//闭合标签
+			html = html.replace(/(<input.*?)>/gi ,"$1 />");
+			html = html.replace(/<img(.*?)>/gi ,"<image $1></image>");
+
 			//根据微信app结构生成 wxml文件
 			let wxFilePath = path.join(xcxOutDir,'/'+fileName+'/',fileName+'.wxml');
 			ss.writeFile(wxFilePath,html);
@@ -141,22 +159,6 @@ let renderFn = {
 			let jsonFileName = path.join(xcxOutDir,'/'+fileName+'/'+fileName+'.json');
 			ss.writeFile(jsonFileName,jsonText);
 
-
-			//处理jq需要的
-			//正则解析html中含id的标签头
-			//带id的input添加data的赋值对象
-			//input标签需要特殊处理事件 不要赋值id
-			let ids = html.match(/(?<=\bid\s*=\s*[\'\"]\s*)[a-z0-9_-]+(?=[\s*\'\"])/ig);
-			if(ids){
-				addJQ($,ids);
-
-				//生成数据data用的js文件 (同时js编译的时候判断是否有文件 要require, app类里面要设置setData)
-				//根据ids生成jq需要的附加data文件
-				let jqFilePath = path.join(xcxDir,'/'+projectName+'/miniprogram/pages/'+fileName+'/'+'jq_data.js'),
-					jq_data_text = createDataText(ids);
-
-				ss.writeFile(jqFilePath,jq_data_text);
-			}
 		};
 
 		this[fn](projectName,writeFileFn);

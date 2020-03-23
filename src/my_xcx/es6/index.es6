@@ -5,12 +5,17 @@ const app = require('wxLib/app');
 // global.jq = jq;
 
 
-let PAGE = {
+
+app.run({
 	data:{
 
 	},
-	onLoad:function(){
-		console.log('')
+	onReady(){
+		this.setData({aaa:'13'});
+		let _this = this;
+		jq(_this,'a3').tap(function(e){
+
+		})
 
 
 	},
@@ -20,8 +25,4 @@ let PAGE = {
 			_this.showMenu();
 		});
 	}
-};
-
-
-
-app.run(PAGE);
+});
