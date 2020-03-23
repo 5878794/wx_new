@@ -5,9 +5,10 @@ const pageFn = require('./pagePublish');
 
 
 let app = {
-    run(obj){
+    run(obj,__jq_data){
         let _this = this;
         obj = Object.assign(obj,pageFn);
+        obj.data.__jq = __jq_data;
         obj.onReady = function(){
             obj.init().then(rs=>{
                 console.log("初始化完成");

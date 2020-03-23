@@ -4,7 +4,8 @@ const app = require('wxLib/app');
 
 // global.jq = jq;
 
-app.run({
+
+let PAGE = {
 	data:{
 
 	},
@@ -19,4 +20,8 @@ app.run({
 			_this.showMenu();
 		});
 	}
-});
+};
+
+
+
+app.run(PAGE);

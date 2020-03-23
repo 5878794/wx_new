@@ -1,3 +1,4 @@
+const __jq_data = require('./jq_data.js');
 const regeneratorRuntime = require('../../wxLib/runtime');
 
 const jq = require('../../wxLib/jq');
@@ -5,7 +6,8 @@ const app = require('../../wxLib/app');
 
 // global.jq = jq;
 
-app.run({
+
+let PAGE = {
 	data:{
 
 	},
@@ -20,4 +22,8 @@ app.run({
 			_this.showMenu();
 		});
 	}
-});
+};
+
+
+
+app.run(PAGE,__jq_data);
