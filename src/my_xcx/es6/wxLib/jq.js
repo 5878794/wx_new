@@ -39,7 +39,6 @@ class jq{
 
         oldData[this.id][type] = val;
         // console.log(oldData)
-        console.log(this.obj)
         this.obj.setData({ __jq:oldData});
     }
 

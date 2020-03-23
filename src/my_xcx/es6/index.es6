@@ -14,6 +14,7 @@ app.run({
 		this.setData({aaa:'13'});
 		let _this = this;
 		jq(_this,'a3').tap(function(e){
+			console.log(e)
 			jq(_this,'a3').cssAnimate({
 				background:'green'
 			},1000)

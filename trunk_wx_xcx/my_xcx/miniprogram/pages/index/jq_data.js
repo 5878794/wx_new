@@ -1,1 +1,0 @@
-module.exports={"__jq":{"a1":{"animation":"","class":"","style":"","data":""},"a3":{"animation":"","class":"","style":"","data":""},"a5":{"animation":"","class":"","style":"","data":""}}}
