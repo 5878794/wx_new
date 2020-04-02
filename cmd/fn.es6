@@ -41,5 +41,9 @@ module.exports = {
     delDir(path){
         let cmd = `rm -r ${path}`;
         this.runExec(cmd);
+    },
+    delFile(path){
+        let cmd = `rm ${path}`;
+        this.runExec(cmd);
     }
 };

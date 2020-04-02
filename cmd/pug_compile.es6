@@ -19,21 +19,23 @@ let addJQ = function($,ids){
 				_class = obj.attr('class') || '',
 				_style = obj.attr('style') || '';
 
-			//判断是否是input 自动加处理事件
-			if(obj[0].name == 'input'){
-				obj.attr({
-					value:'{{'+id+'}}',
-					bindinput:'inputChange'
-				})
-			}
+			if(obj.length != 0){
+				//判断是否是input 自动加处理事件
+				if(obj[0].name == 'input'){
+					obj.attr({
+						value:'{{'+id+'}}',
+						bindinput:'inputChange'
+					})
+				}
 
-			obj.attr({
-				class:_class+' {{__jq.'+id+'.class}}',
-				style:_style+' {{__jq.'+id+'.style}}',
-				data:'{{__jq.'+id+'.data}}',
-				animation:'{{__jq.'+id+'.animation}}',
-				catchtap:'{{__jq.'+id+'.catch_tap}}'
-			});
+				obj.attr({
+					class:_class+' {{__jq.'+id+'.class}}',
+					style:_style+' {{__jq.'+id+'.style}}',
+					data:'{{__jq.'+id+'.data}}',
+					animation:'{{__jq.'+id+'.animation}}',
+					catchtap:'{{__jq.'+id+'.catch_tap}}'
+				});
+			}
 		});
 	}
 };
@@ -120,6 +122,10 @@ let createWxComponent = function(projectName){
 	components.map(rs=>{
 		let thisComponentDir = path.join(componentDir,rs);
 		ss.copyDir(thisComponentDir,wxComponentDir);
+
+		//删除里面的read.me文件
+		let readMePath = path.join(wxComponentDir,rs+'/read.me');
+		ss.delFile(readMePath);
 	});
 
 	//处理应用组件的页面的json文件

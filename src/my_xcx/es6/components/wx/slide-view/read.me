@@ -1,0 +1,19 @@
+
+//注意列表要使用滑动事件必须每个元素都使用slide-view元素
+
+//myevent 方法通过事件的对象获取data-id的值判断是滑动的哪个
+
+slide-view(
+    data-id='slideview'
+    style='backgrond:red;'
+
+    use-direction='x'  //默认x  触发滑动事件的方向
+    slide-max-time='500'  //触发滑动事件的最长时间  从点击到释放
+
+    bindslideright='myevent'
+    bindslideleft='myevent'
+    bindslidedown='myevent'
+    bindslideup='myevent'
+)
+    //包含的元素
+    view(data-id='instert' style='width:100%; height:100rpx;') slideView

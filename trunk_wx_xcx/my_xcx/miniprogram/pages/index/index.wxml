@@ -1,8 +1,8 @@
 <view>aaa</view>
 <view class="test">222</view><image ></image>
 <view>
-  <slide-view style="backgrond:red;" bindmyevent="myevent">
-    <view style="width:100%; height:100rpx;">slideView</view>
+  <slide-view data-id="slideview" style="backgrond:red;" bindslideright="myevent" bindslideleft="myevent">
+    <view data-id="instert" style="width:100%; height:100rpx;">slideView</view>
   </slide-view>
 </view>
 <view style="width:100%;height:1000rpx;"></view>

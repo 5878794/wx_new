@@ -1,5 +1,8 @@
 <!-- 这是自定义组件的内部WXML结构 -->
-<view class="test" catchtouchstart="touchstart" catchtouchmove="touchmove" catchtouchend="touchend">
+<view class="test"
+      bindtouchstart="touchstart"
+      bindtouchmove="touchmove"
+      bindtouchend="touchend"
+>
   <slot></slot>
-  <view class="test1">222</view>
 </view>
