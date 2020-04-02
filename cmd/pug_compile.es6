@@ -56,7 +56,7 @@ let createDataText = function(ids){
 };
 
 //生成app.json
-let createAppJson = function(projectName){
+let createWxAppJson = function(projectName){
 	//获取路径下的pug文件列表
 	let src1 = path.join(src,'/'+projectName+'/pug/'),
 		files = glob.sync(src1+"*.pug"),
@@ -86,6 +86,63 @@ let createAppJson = function(projectName){
 	ss.writeFile(appJsonSrc,JSON.stringify(oldAppJsonText));
 };
 
+//处理自定义标签
+let createWxComponent = function(projectName){
+	//获取使用的组件列表
+	let jsonPath = path.join(src,projectName+'/es6/components/list.json'),
+		list = ss.readFile(jsonPath);
+	list = JSON.parse(list);
+
+	//按页面获取使用的组件(处理数据)
+	let files = {},
+		components = [];
+	for(let [component,pages] of Object.entries(list)){
+		components.push(component);
+		pages.map(page=>{
+			if(!files[page]){
+				files[page] = [];
+			}
+			files[page].push(component)
+		})
+	}
+
+
+	//拷贝组件到wx项目目录
+	let componentDir = path.join(src,projectName+'/es6/components/wx/'),
+		wxComponentDir = path.join(xcxDir,projectName+'/miniprogram/components/');
+
+	//删除wx组件文件夹
+	ss.delDir(wxComponentDir);
+	//创建wx组件文件夹
+	ss.dirIsExistOrCreate(wxComponentDir);
+
+	//开始拷贝
+	components.map(rs=>{
+		let thisComponentDir = path.join(componentDir,rs);
+		ss.copyDir(thisComponentDir,wxComponentDir);
+	});
+
+	//处理应用组件的页面的json文件
+	let parentPath = path.join(xcxDir,projectName+'/miniprogram/pages/');
+
+	for(let [pageName,componentNames] of Object.entries(files)){
+		let thisPagePath = path.join(parentPath,pageName+'/'+pageName+'.json'),
+			jsonText = ss.readFile(thisPagePath);
+		jsonText = JSON.parse(jsonText);
+
+		let obj = {};
+		componentNames.map(rs=>{
+			obj[rs] = '/components/'+rs+'/'+rs;
+		});
+
+		jsonText.usingComponents = obj;
+		jsonText = JSON.stringify(jsonText);
+
+		//写入
+		ss.writeFile(thisPagePath,jsonText);
+	}
+
+};
 
 
 
@@ -153,6 +210,7 @@ let renderFn = {
 
 
 			//提取title中的标题 生成json文件
+
 			let jsonText = {navigationBarTitleText:titleName,usingComponents:{}};
 			jsonText = JSON.stringify(jsonText);
 			//json地址路径
@@ -165,7 +223,10 @@ let renderFn = {
 
 
 		//还需要生成外面的 app.json文件
-		createAppJson(projectName);
+		createWxAppJson(projectName);
+		//处理自定义标签
+		createWxComponent(projectName);
+
 
 	},
 	zfb(projectName){

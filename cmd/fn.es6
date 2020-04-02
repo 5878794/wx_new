@@ -33,5 +33,13 @@ module.exports = {
         if(!fs.existsSync(filePath)){
             fs.mkdirSync(filePath, '0777');
         }
+    },
+    copyDir(source,dist){
+        let cmd = `cp -r ${source} ${dist}`;
+        this.runExec(cmd);
+    },
+    delDir(path){
+        let cmd = `rm -r ${path}`;
+        this.runExec(cmd);
     }
 };

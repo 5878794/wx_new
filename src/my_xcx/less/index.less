@@ -1,5 +1,11 @@
 @import "./lib/fn";
 
 
-view{display: block;width:100%;line-height: 30rem; height: 30rem;}
+view{display: block;width:100%;line-height: 30rem;}
 input{font-size: @fontSize1;}
+:root{
+  --b-bg:red;
+}
+input{
+  background: var(--b-bg,#000);
+}

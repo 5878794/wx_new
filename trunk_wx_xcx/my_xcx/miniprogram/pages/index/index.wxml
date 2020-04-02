@@ -1,6 +1,14 @@
 <view>aaa</view>
-<view>222</view><image ></image>
-<input type="text" id="a1" value="{{a1}}" bindinput="inputChange" class=" {{__jq.a1.class}}" style=" {{__jq.a1.style}}" data="{{__jq.a1.data}}" animation="{{__jq.a1.animation}}" bindtap="{{__jq.a1.catch_tap}}" />
-<view id="a3" style="width:100%; height:50rpx; background:red; {{__jq.a3.style}}" class=" {{__jq.a3.class}}" data="{{__jq.a3.data}}" animation="{{__jq.a3.animation}}" catchtap="{{__jq.a3.catch_tap}}">33</view>
+<view class="test">222</view><image ></image>
+<view>
+  <slide-view style="backgrond:red;" bindmyevent="myevent">
+    <view style="width:100%; height:100rpx;">slideView</view>
+  </slide-view>
+</view>
+<view style="width:100%;height:1000rpx;"></view>
+<input type="text" id="a1" value="{{a1}}" bindinput="inputChange" class=" {{__jq.a1.class}}" style=" {{__jq.a1.style}}" data="{{__jq.a1.data}}" animation="{{__jq.a1.animation}}" catchtap="{{__jq.a1.catch_tap}}" />
+<view id="a3" style="width:100%; height:50rpx; background:red; {{__jq.a3.style}}" class=" {{__jq.a3.class}}" data="{{__jq.a3.data}}" animation="{{__jq.a3.animation}}" catchtap="{{__jq.a3.catch_tap}}">
+  <view id="a6" data-item="123" class=" {{__jq.a6.class}}" style=" {{__jq.a6.style}}" data="{{__jq.a6.data}}" animation="{{__jq.a6.animation}}" catchtap="{{__jq.a6.catch_tap}}">333</view>
+</view>
 <view id="a5" class=" {{__jq.a5.class}}" style=" {{__jq.a5.style}}" data="{{__jq.a5.data}}" animation="{{__jq.a5.animation}}" catchtap="{{__jq.a5.catch_tap}}">44</view>
 <view>xianren</view>

@@ -2,13 +2,21 @@ title test
 
 include ./include/title
 
-view 222
+view(class='test') 222
 
 img()
 
+view
+    slide-view(style='backgrond:red;' bindmyevent='myevent')
+        view(style='width:100%; height:100rpx;') slideView
+
+
+view(style='width:100%;height:1000rpx;')
+
 input(type='text' id='a1')
 
-view(id='a3' style='width:100%; height:50rpx; background:red;') 33
+view(id='a3' style='width:100%; height:50rpx; background:red;')
+    view(id='a6' data-item='123') 333
 
 view(id='a5') 44
 

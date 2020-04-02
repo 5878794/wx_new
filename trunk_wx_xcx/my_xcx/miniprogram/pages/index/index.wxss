@@ -1,1 +1,1 @@
-view{display:block;width:100%;line-height:30rpx;height:30rpx}input{font-size:50rpx}
+view{display:block;width:100%;line-height:30rpx}input{font-size:50rpx}:root{--b-bg:red}input{background:var(--b-bg,#000)}

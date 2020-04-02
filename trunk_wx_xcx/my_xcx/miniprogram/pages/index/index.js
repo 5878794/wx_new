@@ -28,5 +28,8 @@ app.run({
 		jq(_this,'open').tap(function(){
 			_this.showMenu();
 		});
+	},
+	myevent(e){
+		console.log(e)
 	}
 });
